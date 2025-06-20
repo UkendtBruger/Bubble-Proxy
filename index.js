@@ -13,7 +13,7 @@ app.all("*", async (req, res) => {
 
   try {
     // 🔗 Opbyg måladresse (ændr til den API du bruger)
-    const targetUrl = "https://api.adresse.data.gouv.fr" + req.originalUrl;
+    const targetUrl = "https://jsonplaceholder.typicode.com" + req.originalUrl;
 
     // 🔁 Videresend kaldet til det rigtige API
     const response = await fetch(targetUrl, {
