@@ -18,10 +18,19 @@ app.all("*", async (req, res) => {
     // 🔁 Videresend kaldet til det rigtige API
     const response = await fetch(targetUrl, {
       method: req.method,
-      headers: {
-        "Content-Type": "application/json",
-        ...req.headers,
-      },
+headers: {
+  "Content-Type": "application/json",
+  // Fjern headers der kan skabe problemer
+  ...Object.fromEntries(
+    Object.entries(req.headers).filter(
+      ([key]) =>
+        !["host", "x-forwarded-for", "x-forwarded-proto", "x-real-ip"].includes(
+          key.toLowerCase()
+        )
+    )
+  ),
+},
+
       body: ["GET", "HEAD"].includes(req.method) ? null : JSON.stringify(req.body),
     });
 
