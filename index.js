@@ -13,7 +13,7 @@ app.all("*", async (req, res) => {
 
   try {
     // 🔗 Opbyg måladresse (ændr til den API du bruger)
-    const targetUrl = "https://jsonplaceholder.typicode.com" + req.originalUrl;
+    const targetUrl = "https://api.uddannelsesstatistik.dk/Api/v1/statistik" + req.originalUrl;
 
     // 🔁 Videresend kaldet til det rigtige API
     const response = await fetch(targetUrl, {
